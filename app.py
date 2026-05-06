@@ -32,3 +32,32 @@ def pagamento(valor):
 
 if __name__ == '__main__':
     app.run()
+
+
+Questões
+
+# Questão 03
+@app.route("/arearestrita/<id>")
+def area(id):
+    cadeados = {
+        "1": "🔒 Cadeado Fechado",
+        "2": "🔓 Cadeado Aberto"
+    }
+
+    return cadeados.get(id, "ID inválido")
+
+
+# Questão 04
+@app.route("/operacao/<tipo>/<int:op1>/<int:op2>")
+def operacao(tipo, op1, op2):
+    operacoes = {
+        "sum": op1 + op2,
+        "sub": op1 - op2,
+        "mult": op1 * op2,
+        "div": op1 / op2
+    }
+
+    return f"Resultado: {operacoes.get(tipo, 'Operação inválida')}"
+
+
+app.run()
