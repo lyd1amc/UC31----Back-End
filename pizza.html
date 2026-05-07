@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Pizzaria</title>
+    <style>
+    
+        body { 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            background-color: #f8f8f8;
+            padding-top: 50px;
+        }
+        .container {
+            background: white;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        img { 
+            width: 350px; 
+            border-radius: 8px; 
+            margin-top: 15px;
+        }
+        h1 { color: #e63946; text-transform: capitalize; }
+        a { color: #457b9d; text-decoration: none; display: block; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pizza de {{ sabor_escolhido }}</h1>
+        <img src="{{ foto }}" alt="Foto da pizza">
+        
+        <a href="/">← Ver outros sabores</a>
+    </div>
+
+</body>
+</html>

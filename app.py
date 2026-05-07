@@ -1,29 +1,22 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/ola/<nome>')
-def exercicio_1(nome):
-    return f"Olá, {nome}! Seja bem-vinda ao sistema."
+fotos_pizzas = {
+    "calabresa": "https://share.google/BNodOZuBwBamT6vIi",
+    "margherita": "https://share.google/JZuaWsioZSa1rClg1",
+    "frango": "https://share.google/bzhA0gyntsMu95MUu"
+}
 
-@app.route('/calculo/<int:n1>/<int:n2>')
-def exercicio_2(n1, n2):
-    return f"A soma de {n1} + {n3} é {n1 + n2}"
+@app.route('/pizzaria/<sabor>')
+def pagina_pizza(sabor):
+    sabor = sabor.lower()
 
-@app.route('/idade/<nome>/<int:idade>')
-def exercicio_3(nome, idade):
-    if idade >= 18:
-        return f"{nome} é maior de idade."
-    else:
-        return f"{nome} é menor de idade."
-
-@app.route('/produto/<nome>/<float:preco>')
-def exercicio_4(nome, preco):
-    return f"O produto {nome} custa R$ {preco}"
-
-@app.route('/repetir/<palavra>/<int:vezes>')
-def exercicio_5(palavra, vezes):
-    return (palavra + " ") * vezes
+    if sabor in fotos_pizzas:
+        link_foto = fotos_pizzas[sabor]
+        return render_template('index.html', sabor_escolhido=sabor, foto=link_foto)
+    
+    return " Esse sabor ainda não temos no cardápio.", 404
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
