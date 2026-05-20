@@ -2,21 +2,28 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-fotos_pizzas = {
-    "calabresa": "https://share.google/BNodOZuBwBamT6vIi",
-    "margherita": "https://share.google/JZuaWsioZSa1rClg1",
-    "frango": "https://share.google/bzhA0gyntsMu95MUu"
+cardapio_lanches = {
+    1: {"nome": "X-Burguer", "preco": 15.00, "ingredientes": "Pão, carne de 120g e queijo prato."},
+    2: {"nome": "X-Salada", "preco": 18.00, "ingredientes": "Pão, carne, queijo, alface, tomate e maionese."},
+    3: {"nome": "X-Bacon", "preco": 22.00, "ingredientes": "Pão, carne, queijo, bacon crocante e molho barbecue."}
 }
 
-@app.route('/pizzaria/<sabor>')
-def pagina_pizza(sabor):
-    sabor = sabor.lower()
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-    if sabor in fotos_pizzas:
-        link_foto = fotos_pizzas[sabor]
-        return render_template('index.html', sabor_escolhido=sabor, foto=link_foto)
-    
-    return " Esse sabor ainda não temos no cardápio.", 404
+@app.route('/cardapio')
+def mostrar_cardapio():
+    return render_template('cardapio.html', produtos=cardapio_lanches)
+
+@app.route('/lanche/<int:id>')
+def detalhe_lanche(id):
+    lanche_selecionado = cardapio_lanches.get(id)
+    return render_template('lanche.html', lanche=lanche_selecionado)
+
+@app.route('/contato')
+def contato():
+    return render_template('contato.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
