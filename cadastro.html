@@ -1,26 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Jogo </title>
+    <title>Cadastro Escolar</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+        }
+        p {
+            margin: 5px 0;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #aaaaaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .dados-sucesso {
+            background-color: #f8fafc;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-   <h2>Cadastro</h2>
-   <form method="POST">
-   <label>Nome:</label><br>
-   <input type="text" name="nome"><br><br>
 
-   <label>Selecione o jogo:</label>
-   <input type="radio" name="jogo" value="jogo1"> Jogo 1 <br/>
-   <input type="radio" name="jogo" value="jogo2"> Jogo 2 <br/>
-   <input type="radio" name="jogo" value="jogo3"> Jogo 3 <br/>
+    <h2>Cadastro de Aluno</h2>
 
-   <label>E-mail:</label><br>
-   <input type="text" name="email"><br><br>
-   <button type="text" name="nome"> Cadastrar</button>
+   
+        <div class="dados-sucesso">
+            <h3>Cadastro realizado com sucesso!</h3>
+            <p><b>Nome:</b> aluno.nome </p>
+            <p><b>E-mail:</b> aluno.email </p>
+            <p><b>Telefone:</b> aluno.telefone </p>
+            <p><b>CPF:</b> aluno.cpf </p>
+            <p><b>Cidade:</b> aluno.cidade </p>
+            <p><b>Estado:</b> aluno.estado </p>
+            <p><b>Curso:</b> aluno.curso </p>
+            <p><b>Idade:</b> aluno.idade </p>
+        </div>
+   
+
+    <form action="/" method="POST">
+        <label>Nome Completo:</label>
+        <input type="text" name="nome">
+
+        <label>E-mail:</label>
+        <input type="text" name="email">
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone" placeholder="(84) 99999-8888">
+
+        <label>CPF:</label>
+        <input type="text" name="cpf" placeholder="123.456.789-00">
+
+        <label>Cidade:</label>
+        <input type="text" name="cidade">
+
+        <label>Estado:</label>
+        <input type="text" name="estado" placeholder="Ex: RN" maxlength="2">
+
+        <label>Curso:</label>
+        <select name="curso">
+            <option value="">Selecione...</option>
+            <option value="Desenvolvimento de Sistemas">Desenvolvimento de Sistemas</option>
+        </select>
+
+        <label>Idade:</label>
+        <input type="text" name="idade">
+
+        <label>Senha:</label>
+        <input type="password" name="senha">
+
+        <button type="submit">Enviar Cadastro</button>
     </form>
 
-<p>{{ mensagem }}</p>
 </body>
 </html>
