@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador</title>
+</head>
+<body>
+    <h2>Quantidade de acessos: {{ session['contador'] }}</h2>
+    
+    <form action="/zerar" method="POST">
+        <button type="submit">Zerar</button>
+    </form>
+</body>
+</html>
